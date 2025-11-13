@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tools } from '@/app/tools';
 
 export default function Footer() {
   return (
@@ -21,22 +22,22 @@ export default function Footer() {
             Available Tools
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <Link href="/tools/image-compressor" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors">
               <strong className="text-gray-900 dark:text-gray-100">Image Compressor</strong><br />
-              Reduce file sizes instantly while maintaining quality. Supports PNG, JPG, and WebP formats.
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+              
+            </Link>
+            <Link href="/tools/image-converter" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors">
               <strong className="text-gray-900 dark:text-gray-100">Image Converter</strong><br />
-              Convert between PNG, JPG, and WebP formats quickly and easily.
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              <strong className="text-gray-900 dark:text-gray-100">PDF Merger</strong><br />
-              Combine multiple PDF files into a single document without losing quality.
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            
+            </Link>
+            <Link href="/tools/pdf-merger" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors">
+                          <strong className="text-gray-900 dark:text-gray-100">PDF Merger</strong><br />
+            
+            </Link>
+            <Link href="/tools/video-converter" className="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors">
               <strong className="text-gray-900 dark:text-gray-100">Media Converter</strong><br />
-              Convert videos and audio between different formats quickly and easily.
-            </div>
+           
+            </Link>
           </div>
         </div>
 
@@ -51,6 +52,13 @@ export default function Footer() {
             <li>Free to use - no hidden costs or subscriptions required</li>
             <li>Secure and private - no data collection or tracking</li>
           </ul>
+        </div>
+
+        {/* Footer Ad Space */}
+        <div className="mb-6 text-center">
+          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-6 max-w-4xl mx-auto">
+            <p className="text-gray-500">Ad Space - Footer (responsive banner)</p>
+          </div>
         </div>
 
         {/* Bottom Section */}

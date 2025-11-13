@@ -3,12 +3,15 @@
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import ToolCard from '@/components/ToolCard';
 import { tools } from '@/app/tools';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   const filteredTools = useMemo(() => {
     return tools.filter(tool =>
@@ -29,6 +32,35 @@ export default function Home() {
         <p className="text-xl text-muted-foreground mb-8">
           Powerful tools for image processing and more, all running client-side
         </p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-4 mb-8"
+        >
+          <select
+            onChange={(e) => router.push(e.target.value)}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+            defaultValue=""
+          >
+            <option value="" disabled>Select a tool...</option>
+            {tools.map((tool) => (
+              <option key={tool.id} value={tool.path}>
+                {tool.name}
+              </option>
+            ))}
+          </select>
+          {tools.map((tool) => (
+            <Link
+              key={tool.id}
+              href={tool.path}
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+            >
+              {tool.name}
+            </Link>
+          ))}
+        </motion.div>
 
         <div className="relative max-w-md mx-auto">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />

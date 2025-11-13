@@ -49,6 +49,11 @@ export default function PDFMerger() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <div className="mb-8 text-center">
+        <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 max-w-4xl mx-auto">
+          <p className="text-gray-500">Ad Space - Top Banner (728x90 or responsive)</p>
+        </div>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -60,8 +65,15 @@ export default function PDFMerger() {
           Combine multiple PDF files into a single document
         </p>
       </motion.div>
+       <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Sidebar Ad Space */}
+        <div className="hidden lg:block">
+          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-4 h-96">
+            <p className="text-gray-500 text-center">Ad Space - Sidebar (300x600)</p>
+          </div>
+        </div>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="lg:col-span-3">
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -146,7 +158,16 @@ export default function PDFMerger() {
             </CardContent>
           </Card>
         )}
+
+        {/* Inline Ad Space */}
+        <div className="mt-8 text-center">
+          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-6 max-w-4xl mx-auto">
+            <p className="text-gray-500">Ad Space - Inline (responsive box ad)</p>
+          </div>
+        </div>
       </div>
+    </div>
+    
     </div>
   );
 }

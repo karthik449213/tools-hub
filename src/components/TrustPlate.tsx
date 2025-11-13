@@ -20,6 +20,7 @@ export default function TrustPlate() {
               <i className="fa fa-copy text-4xl text-blue-500"></i>
             </div>
             <div className="flex-1">
+          
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">+200 Formats Supported</h3>
               <p className="text-gray-600 dark:text-gray-300">
                 CloudConvert is your universal app for file conversions. We support nearly all audio, video,
@@ -36,11 +37,12 @@ export default function TrustPlate() {
               <i className="fa fa-shield-check text-4xl text-green-500"></i>
             </div>
             <div className="flex-1">
+
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Data Security</h3>
               <p className="text-gray-600 dark:text-gray-300">
                 CloudConvert is ISO 27001 certified and has been trusted by our users and customers since its founding in 2012. No one except you
                 will ever have access to your files. We earn money by selling access to our API, not by selling your
-                data. Read more about that in our <a href="https://cloudconvert.com/security" className="text-blue-500 hover:underline">Security Overview</a>.
+                data. Read more about that in our Security Overview.
               </p>
             </div>
           </motion.div>
@@ -54,6 +56,7 @@ export default function TrustPlate() {
               <i className="fa fa-cogs text-4xl text-purple-500"></i>
             </div>
             <div className="flex-1">
+             
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">High-Quality Conversions</h3>
               <p className="text-gray-600 dark:text-gray-300">
                 Besides using open source software under the hood, we’ve partnered with various software vendors to
@@ -74,7 +77,7 @@ export default function TrustPlate() {
               <p className="text-gray-600 dark:text-gray-300">
                 Our API allows custom integrations with your app. You pay only for what you actually use, and there are
                 huge discounts for high-volume customers. We provide a lot of handy features such as full Amazon S3
-                integration. Check out the <a href="https://cloudconvert.com/apis/file-conversion" className="text-blue-500 hover:underline">CloudConvert API</a>.
+                integration. Check out the converter
               </p>
             </div>
           </motion.div>
