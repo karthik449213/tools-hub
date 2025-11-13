@@ -1,5 +1,5 @@
 import { Tool } from '@/types/tool';
-import { Archive, Shuffle, FileText } from 'lucide-react';
+import { Archive, Shuffle, FileText, Video } from 'lucide-react';
 
 export const tools: Tool[] = [
   {
@@ -22,5 +22,12 @@ export const tools: Tool[] = [
     description: 'Combine multiple PDF files into one document',
     path: '/tools/pdf-merger',
     icon: FileText,
+  },
+  {
+    id: 'video-converter',
+    name: 'Media Converter',
+    description: 'Convert videos and audio between different formats',
+    path: '/tools/video-converter',
+    icon: Video,
   },
 ];
