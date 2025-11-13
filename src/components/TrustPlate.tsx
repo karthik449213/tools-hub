@@ -40,7 +40,7 @@ export default function TrustPlate() {
               <p className="text-gray-600 dark:text-gray-300">
                 CloudConvert is ISO 27001 certified and has been trusted by our users and customers since its founding in 2012. No one except you
                 will ever have access to your files. We earn money by selling access to our API, not by selling your
-                data. Read more about that in our <a href="https://cloudconvert.com/security" className="text-blue-500 hover:underline">Security Overview</a>.
+                data. Read more about that in our Security Overview</a>.
               </p>
             </div>
           </motion.div>
@@ -74,7 +74,7 @@ export default function TrustPlate() {
               <p className="text-gray-600 dark:text-gray-300">
                 Our API allows custom integrations with your app. You pay only for what you actually use, and there are
                 huge discounts for high-volume customers. We provide a lot of handy features such as full Amazon S3
-                integration. Check out the <a href="https://cloudconvert.com/apis/file-conversion" className="text-blue-500 hover:underline">CloudConvert API</a>.
+                integration. Check out the CloudConvert API</a>.
               </p>
             </div>
           </motion.div>
