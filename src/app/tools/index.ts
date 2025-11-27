@@ -1,5 +1,5 @@
 import { Tool } from '@/types/tool';
-import { Archive, Shuffle, FileText, Video } from 'lucide-react';
+import { Archive, Shuffle, FileText, Video, ArrowUpDown } from 'lucide-react';
 
 export const tools: Tool[] = [
   {
@@ -30,4 +30,26 @@ export const tools: Tool[] = [
     path: '/tools/video-converter',
     icon: Video,
   },
+  {
+    id: 'PDF converter',
+    name: 'PDF Converter',
+    description: 'Convert PDF  between different formats',
+    path: '/tools/pdf-word',
+    icon: Video,
+  },
+  {
+    id: 'pdf-compressor',
+    name: 'PDF Compressor',
+    description: 'Compress PDF files to reduce file size',
+    path: '/tools/pdf-compressor',
+    icon: Archive,
+  },
+   {
+    id: 'pdf-organizer',
+    name: 'PDF Organizer',
+    description: 'Compress PDF files to reduce file size',
+    path: '/tools/pdf-organizer',
+    icon: Archive,
+  },
+
 ];
