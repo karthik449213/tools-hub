@@ -44,12 +44,19 @@ export const tools: Tool[] = [
     path: '/tools/pdf-compressor',
     icon: Archive,
   },
-   {
+  {
     id: 'pdf-organizer',
     name: 'PDF Organizer',
     description: 'Compress PDF files to reduce file size',
     path: '/tools/pdf-organizer',
     icon: Archive,
+  },
+  {
+    id: 'pdf-image-converter',
+    name: 'PDF Image Converter',
+    description: 'Convert PDF to images and images to PDF',
+    path: '/tools/pdf-image-converter',
+    icon: ArrowUpDown,
   },
 
 ];

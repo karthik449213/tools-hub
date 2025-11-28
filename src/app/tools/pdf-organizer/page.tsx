@@ -31,7 +31,7 @@ export default function PDFOrganizer() {
 
     try {
       // Dynamically import pdfjs to avoid SSR issues
-      const pdfjsLib = (await import('pdfjs-dist')).default;
+      const pdfjsLib = await import('pdfjs-dist');
       pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
 
       const arrayBuffer = await file.arrayBuffer();
@@ -278,7 +278,7 @@ function DraggablePage({ page, index, onReorder }: DraggablePageProps) {
         <span className="text-sm font-medium">Page {index + 1}</span>
       </div>
       <div className="aspect-[3/4] overflow-hidden rounded border">
-        <img src={page.dataUrl} alt={`Page ${index + 1}`} className="w-full h-full object-cover" />
+        <img src={page.dataUrl} alt={`Page ${index + 1}`} className="w-full h-full object-cover" draggable={false} />
       </div>
     </div>
   );

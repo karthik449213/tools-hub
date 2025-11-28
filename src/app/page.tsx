@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import ToolCard from '@/components/ToolCard';
 import { tools } from '@/app/tools';
 
+
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function Home() {
         <p className="text-xl text-muted-foreground mb-8">
           Powerful tools for image processing and more, all running client-side
         </p>
-
+        
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

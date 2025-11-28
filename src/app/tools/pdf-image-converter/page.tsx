@@ -1,58 +1,58 @@
 'use client';
-import { useState,useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, Download, FileText, X, ArrowRightLeft } from 'lucide-react';
+import { Upload, Download, FileText, X, ArrowRightLeft, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { convertPDFToWord, convertWordToPDF } from '@/lib/pdfUtils';
+import { convertPDFToImages, convertImagesToPDF } from '@/lib/pdfUtils';
 import { downloadFile } from '@/lib/fileUtils';
 
-export default function PDFToWord() {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+export default function PDFImageConverter() {
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isConverting, setIsConverting] = useState(false);
-  const [conversionMode, setConversionMode] = useState<'pdf-to-word' | 'word-to-pdf'>('pdf-to-word');
+  const [conversionMode, setConversionMode] = useState<'pdf-to-images' | 'images-to-pdf'>('pdf-to-images');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      if (conversionMode === 'pdf-to-word' && file.type === 'application/pdf') {
-        setSelectedFile(file);
-      } else if (conversionMode === 'word-to-pdf' && file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-        setSelectedFile(file);
+    const files = Array.from(event.target.files || []);
+    if (files.length > 0) {
+      if (conversionMode === 'pdf-to-images') {
+        if (files.length === 1 && files[0].type === 'application/pdf') {
+          setSelectedFiles(files);
+        }
+      } else {
+        const validFiles = files.filter(file => file.type.startsWith('image/'));
+        if (validFiles.length > 0) {
+          setSelectedFiles(validFiles);
+        }
       }
     }
   };
 
-  const removeFile = () => {
-    setSelectedFile(null);
+  const removeFile = (index: number) => {
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleConvert = async () => {
-    if (!selectedFile) return;
+    if (selectedFiles.length === 0) return;
 
     setIsConverting(true);
     try {
-      let resultBytes: Uint8Array;
-      let blobType: string;
-      let fileName: string;
-
-      if (conversionMode === 'pdf-to-word') {
-        resultBytes = await convertPDFToWord(selectedFile);
-        blobType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-        fileName = selectedFile.name.replace('.pdf', '.docx');
+      if (conversionMode === 'pdf-to-images') {
+        const images = await convertPDFToImages(selectedFiles[0]);
+        // Download each image
+        images.forEach((blob, index) => {
+          downloadFile(blob, `page_${index + 1}.png`);
+        });
       } else {
-        resultBytes = await convertWordToPDF(selectedFile);
-        blobType = 'application/pdf';
-        fileName = selectedFile.name.replace('.docx', '.pdf');
+        const pdfBytes = await convertImagesToPDF(selectedFiles);
+        const buffer = pdfBytes.buffer.slice(pdfBytes.byteOffset, pdfBytes.byteOffset + pdfBytes.byteLength) as ArrayBuffer;
+        const blob = new Blob([buffer], { type: 'application/pdf' });
+        downloadFile(blob, 'converted.pdf');
       }
-
-      const buffer = resultBytes.buffer.slice(resultBytes.byteOffset, resultBytes.byteOffset + resultBytes.byteLength) as ArrayBuffer;
-      const blob = new Blob([buffer], { type: blobType });
-      downloadFile(blob, fileName);
     } catch (error) {
-      console.error(`${conversionMode === 'pdf-to-word' ? 'PDF to Word' : 'Word to PDF'} conversion failed:`, error);
-      alert(`Failed to convert ${conversionMode === 'pdf-to-word' ? 'PDF to Word' : 'Word to PDF'}. Please try again.`);
+      console.error(`${conversionMode === 'pdf-to-images' ? 'PDF to Images' : 'Images to PDF'} conversion failed:`, error);
+      alert(`Failed to convert ${conversionMode === 'pdf-to-images' ? 'PDF to Images' : 'Images to PDF'}. Please try again.`);
     } finally {
       setIsConverting(false);
     }
@@ -79,9 +79,9 @@ export default function PDFToWord() {
         transition={{ duration: 0.5 }}
         className="text-center mb-8"
       >
-        <h1 className="text-3xl font-bold mb-4">PDF & Word Converter</h1>
+        <h1 className="text-3xl font-bold mb-4">PDF & Image Converter</h1>
         <p className="text-muted-foreground">
-          Convert PDF files to editable Word documents and vice versa
+          Convert PDF files to images and vice versa
         </p>
       </motion.div>
       <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -103,22 +103,22 @@ export default function PDFToWord() {
             <CardContent>
               <div className="flex gap-4 justify-center">
                 <Button
-                  variant={conversionMode === 'pdf-to-word' ? 'default' : 'outline'}
+                  variant={conversionMode === 'pdf-to-images' ? 'default' : 'outline'}
                   onClick={() => {
-                    setConversionMode('pdf-to-word');
-                    setSelectedFile(null);
+                    setConversionMode('pdf-to-images');
+                    setSelectedFiles([]);
                   }}
                 >
-                  PDF to Word
+                  PDF to Images
                 </Button>
                 <Button
-                  variant={conversionMode === 'word-to-pdf' ? 'default' : 'outline'}
+                  variant={conversionMode === 'images-to-pdf' ? 'default' : 'outline'}
                   onClick={() => {
-                    setConversionMode('word-to-pdf');
-                    setSelectedFile(null);
+                    setConversionMode('images-to-pdf');
+                    setSelectedFiles([]);
                   }}
                 >
-                  Word to PDF
+                  Images to PDF
                 </Button>
               </div>
             </CardContent>
@@ -128,7 +128,7 @@ export default function PDFToWord() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Upload className="h-5 w-5" />
-                Upload PDF File
+                Upload {conversionMode === 'pdf-to-images' ? 'PDF' : 'Image'} Files
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -136,7 +136,8 @@ export default function PDFToWord() {
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept={conversionMode === 'pdf-to-word' ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}
+                  accept={conversionMode === 'pdf-to-images' ? 'application/pdf' : 'image/*'}
+                  multiple={conversionMode === 'images-to-pdf'}
                   onChange={handleFileSelect}
                   className="hidden"
                 />
@@ -145,39 +146,45 @@ export default function PDFToWord() {
                   className="mb-4"
                 >
                   <Upload className="h-4 w-4 mr-2" />
-                  Choose {conversionMode === 'pdf-to-word' ? 'PDF' : 'Word'} File
+                  Choose {conversionMode === 'pdf-to-images' ? 'PDF' : 'Image'} Files
                 </Button>
                 <p className="text-sm text-muted-foreground">
-                  Select a {conversionMode === 'pdf-to-word' ? 'PDF' : 'Word'} file to convert to {conversionMode === 'pdf-to-word' ? 'Word' : 'PDF'}
+                  Select {conversionMode === 'pdf-to-images' ? 'a PDF file' : 'image files'} to convert to {conversionMode === 'pdf-to-images' ? 'images' : 'PDF'}
                 </p>
               </div>
             </CardContent>
           </Card>
 
-          {selectedFile && (
+          {selectedFiles.length > 0 && (
             <Card className="mb-8">
               <CardHeader>
-                <CardTitle>Selected File</CardTitle>
+                <CardTitle>Selected Files</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <FileText className="h-5 w-5 text-muted-foreground" />
-                    <div>
-                      <p className="font-medium">{selectedFile.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {formatFileSize(selectedFile.size)}
-                      </p>
+                {selectedFiles.map((file, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-lg mb-2">
+                    <div className="flex items-center gap-3">
+                      {conversionMode === 'pdf-to-images' ? (
+                        <FileText className="h-5 w-5 text-muted-foreground" />
+                      ) : (
+                        <ImageIcon className="h-5 w-5 text-muted-foreground" />
+                      )}
+                      <div>
+                        <p className="font-medium">{file.name}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {formatFileSize(file.size)}
+                        </p>
+                      </div>
                     </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => removeFile(index)}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={removeFile}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
+                ))}
 
                 <div className="mt-6 text-center">
                   <Button
@@ -186,7 +193,7 @@ export default function PDFToWord() {
                     size="lg"
                   >
                     <Download className="h-4 w-4 mr-2" />
-                    {isConverting ? 'Converting...' : `Convert to ${conversionMode === 'pdf-to-word' ? 'Word' : 'PDF'}`}
+                    {isConverting ? 'Converting...' : `Convert to ${conversionMode === 'pdf-to-images' ? 'Images' : 'PDF'}`}
                   </Button>
                 </div>
               </CardContent>
