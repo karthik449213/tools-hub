@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { tools } from '@/app/tools';
+import TopBannerAd from "./TopBannerAd";
 
 export default function Footer() {
   return (
@@ -47,15 +48,13 @@ export default function Footer() {
 
     {/* Footer Ad */}
     <div className="mb-6 text-center">
-      <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-6 max-w-4xl mx-auto">
-        <p className="text-gray-500">Ad Space - Footer (responsive banner)</p>
-      </div>
+      <TopBannerAd />
     </div>
 
     {/* Bottom Row */}
     <div className="flex flex-col md:flex-row items-center justify-between gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
       <p className="text-sm text-gray-600 dark:text-gray-400 text-center md:text-left">
-        © {new Date().getFullYear()} Online Tools Hub. All rights reserved.
+        © {new Date().getFullYear()} Free Convertm. All rights reserved.
       </p>
 
       <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">

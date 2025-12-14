@@ -15,9 +15,9 @@ export default function TrustPlate() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
+            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border-2 border-black"
           >
-            <div className="flex-shrink-0 text-center">
+            <div className="shrink-0 text-center">
               <img src="/file.svg" alt="File Icon" className="w-12 h-12 text-blue-500" />
             </div>
             <div className="flex-1">
@@ -31,9 +31,9 @@ export default function TrustPlate() {
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
+            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border-2 border-black"
           >
-            <div className="flex-shrink-0 text-center">
+            <div className="shrink-0 text-center">
               <img src="/globe.svg" alt="Globe Icon" className="w-12 h-12 text-green-500" />
             </div>
             <div className="flex-1">
@@ -46,12 +46,12 @@ export default function TrustPlate() {
             </div>
           </motion.div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb8">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
+            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border-2 border-black"
           >
-            <div className="flex-shrink-0 text-center">
+            <div className="shrink-0 text-center">
               <img src="/next.svg" alt="Next Icon" className="w-12 h-12 text-purple-500" />
             </div>
             <div className="flex-1">
@@ -65,9 +65,9 @@ export default function TrustPlate() {
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
+            className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border-2 border-black"
           >
-            <div className="flex-shrink-0 text-center">
+            <div className="shrink-0 text-center">
               <img src="/window.svg" alt="Window Icon" className="w-12 h-12 text-orange-500" />
             </div>
             <div className="flex-1">

@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import ToolCard from '@/components/ToolCard';
 import { tools } from '@/app/tools';
 
-
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
@@ -29,9 +28,9 @@ export default function Home() {
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h1 className="text-4xl font-bold mb-4">Welcome to Online Tools Hub</h1>
+        <h1 className="text-4xl font-bold mb-4">Welcome to Free Convertm</h1>
         <p className="text-xl text-muted-foreground mb-8">
-          Powerful tools for image processing and more, all running client-side
+        No Servers. No Limits. Just Powerful Tools.
         </p>
         
         <motion.div
