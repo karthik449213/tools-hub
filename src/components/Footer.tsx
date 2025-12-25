@@ -8,21 +8,23 @@ export default function Footer() {
   <div className="max-w-6xl mx-auto px-4 py-8">
 
     {/* About */}
-    <div className="mb-6 text-center">
-      <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">
-        About Online Tools Hub
-      </h3>
+    <div id="about" className="mb-6 text-center">
+      <h2 className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">
+        About Tools Herd
+      </h2>
+      <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-3">
+        Tools Herd is your trusted destination for free online conversion and compression tools. We provide fast, secure, client-side tools for processing images, PDFs, and videos.
+      </p>
       <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Online Tools Hub offers fast, secure, client-side tools for image and PDF processing.
-        All processing happens in your browser — nothing is uploaded.
+        All processing happens in your browser — nothing is uploaded to our servers. Your privacy and security are our top priorities.
       </p>
     </div>
 
     {/* Tools */}
     <div className="mb-6">
-      <h4 className="text-md font-medium mb-3 text-center text-gray-900 dark:text-gray-100">
-        Available Tools
-      </h4>
+      <h3 className="text-lg font-semibold mb-3 text-center text-gray-900 dark:text-gray-100">
+        Our Tools
+      </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
         {tools.map((tool) => (
@@ -35,9 +37,9 @@ export default function Footer() {
 
     {/* Benefits */}
     <div className="mb-6 text-center">
-      <h4 className="text-md font-medium mb-3 text-gray-900 dark:text-gray-100">
-        Why Choose Online Tools Hub?
-      </h4>
+      <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">
+        Why Choose Tools Herd?
+      </h3>
       <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2 max-w-2xl mx-auto">
         <li>100% client-side processing</li>
         <li>Fast and efficient</li>
@@ -54,7 +56,7 @@ export default function Footer() {
     {/* Bottom Row */}
     <div className="flex flex-col md:flex-row items-center justify-between gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
       <p className="text-sm text-gray-600 dark:text-gray-400 text-center md:text-left">
-        © {new Date().getFullYear()} Free Convertm. All rights reserved.
+        © {new Date().getFullYear()} <strong>Tools Herd</strong>. All rights reserved. | Free Online Conversion Tools
       </p>
 
       <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">

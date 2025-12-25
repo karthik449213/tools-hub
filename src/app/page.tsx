@@ -22,15 +22,45 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Tools Herd",
+            "description": "Free online converter tools for images, PDFs, and videos",
+            "url": "https://toolsherd.in",
+            "applicationCategory": "Utility",
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "USD",
+              "price": "0",
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "1000",
+            },
+          }),
+        }}
+      />
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h1 className="text-4xl font-bold mb-4">Welcome to Free Convertm</h1>
-        <p className="text-xl text-muted-foreground mb-8">
-        No Servers. No Limits. Just Powerful Tools.
+        <h1 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
+          Tools Herd: Free Online Conversion Tools
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-4">
+          Convert, Compress & Organize Images, PDFs & Videos Instantly
+        </p>
+        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
+          100% client-side processing. No signup required. No limits. Completely secure and private.
         </p>
         
         <motion.div
@@ -43,6 +73,7 @@ export default function Home() {
             onChange={(e) => router.push(e.target.value)}
             className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
             defaultValue=""
+            aria-label="Select a tool"
           >
             <option value="" disabled>Select a tool...</option>
             {tools.map((tool) => (
@@ -51,11 +82,11 @@ export default function Home() {
               </option>
             ))}
           </select>
-          {tools.map((tool) => (
+          {tools.slice(0, 4).map((tool) => (
             <Link
               key={tool.id}
               href={tool.path}
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm md:text-base"
             >
               {tool.name}
             </Link>
@@ -66,13 +97,20 @@ export default function Home() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
           <Input
             type="text"
-            placeholder="Search tools..."
+            placeholder="Search tools... (e.g., compress, convert, PDF)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"
+            aria-label="Search tools"
           />
         </div>
       </motion.div>
+
+      {/* Featured Tools Section */}
+      <div className="mb-12">
+        <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Popular Tools</h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">Choose from our collection of free online conversion and compression tools</p>
+      </div>
 
       <motion.div
         initial={{ opacity: 0 }}

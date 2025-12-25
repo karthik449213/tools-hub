@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -7,29 +7,67 @@ import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 5,
+  colorScheme: "light dark",
+};
+
 export const metadata: Metadata = {
-  title: "Online Converter Tools Hub | Image, PDF & File Tools",
+  title: "Tools Herd - Free Online Converter Tools | Image, PDF & Video Conversion",
   description:
-    "Free online converter tools to convert, compress, resize and optimize images, PDFs and files instantly. Fast, secure, and no signup required.",
+    "Tools Herd provides free online converter tools for images, PDFs, and videos. Compress, convert, merge, and organize files instantly in your browser. No signup, no limits, 100% secure.",
   keywords: [
-    "online converter",
+    "tools herd",
+    "free online tools",
     "image converter",
-    "file converter",
+    "PDF converter",
+    "video converter",
     "image compressor",
-    "pdf converter",
-    "online tools",
+    "PDF compressor",
+    "file converter",
+    "online converter",
+    "convert images",
+    "compress PDF",
+    "merge PDF",
+    "convert video",
+    "free conversion tools",
+    "no signup tools",
+    "client-side tools",
   ],
+  authors: [{ name: "Tools Herd" }],
+  creator: "Tools Herd",
   openGraph: {
-    title: "Online Converter Tools Hub",
+    title: "Tools Herd - Free Online Converter & Compression Tools",
     description:
-      "Convert, compress & optimize images, PDFs and files instantly with our free online tools hub.",
+      "Convert, compress, merge, and organize images, PDFs, and videos instantly. 100% secure, browser-based, no signup required.",
     type: "website",
+    locale: "en_US",
+    url: "https://toolsherd.in",
+    siteName: "Tools Herd",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Online Converter Tools Hub",
+    title: "Tools Herd - Free Online Converter Tools",
     description:
-      "Fast, free & secure online converter tools for images, PDFs and files.",
+      "Fast, free, and secure online tools for converting, compressing, and organizing images, PDFs, and videos.",
+    creator: "@toolsherd",
+  },
+  alternates: {
+    canonical: "https://toolsherd.in",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": "-1",
+    "max-video-preview": "-1",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -41,6 +79,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Tools Herd",
+              "url": "https://toolsherd.in",
+              "description": "Free online converter tools for images, PDFs, and videos",
+              "logo": "https://toolsherd.in/logo.png",
+              "sameAs": [
+                "https://twitter.com/toolsherd",
+                "https://linkedin.com/company/toolsherd",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <Navbar />
         <main className="min-h-screen">

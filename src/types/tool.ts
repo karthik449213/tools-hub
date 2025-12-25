@@ -4,4 +4,5 @@ export interface Tool {
   description: string;
   path: string;
   icon: React.ComponentType<{ className?: string }>;
+  category?: 'Image' | 'PDF' | 'Video' | 'Document' | 'Other';
 }

@@ -1,0 +1,20 @@
+# Tools Herd - robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /.next/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /public/
+
+# Specific crawl delays for major search engines
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://toolsherd.in/sitemap.xml
+Sitemap: https://toolsherd.in/sitemap-tools.xml

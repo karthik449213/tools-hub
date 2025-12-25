@@ -8,6 +8,7 @@ export const tools: Tool[] = [
     description: 'Compress images instantly to reduce file size',
     path: '/tools/image-compressor',
     icon: Archive,
+    category: 'Image',
   },
   {
     id: 'converter',
@@ -15,6 +16,7 @@ export const tools: Tool[] = [
     description: 'Convert between PNG, JPG, and WebP formats',
     path: '/tools/image-converter',
     icon: Shuffle,
+    category: 'Image',
   },
   {
     id: 'pdf-merger',
@@ -22,6 +24,7 @@ export const tools: Tool[] = [
     description: 'Combine multiple PDF files into one document',
     path: '/tools/pdf-merger',
     icon: FileText,
+    category: 'PDF',
   },
   {
     id: 'video-converter',
@@ -29,13 +32,15 @@ export const tools: Tool[] = [
     description: 'Convert videos and audio between different formats',
     path: '/tools/video-converter',
     icon: Video,
+    category: 'Video',
   },
   {
     id: 'PDF converter',
     name: 'PDF Converter',
-    description: 'Convert PDF  between different formats',
+    description: 'Convert PDF between different formats',
     path: '/tools/pdf-word',
     icon: Video,
+    category: 'PDF',
   },
   {
     id: 'pdf-compressor',
@@ -43,13 +48,15 @@ export const tools: Tool[] = [
     description: 'Compress PDF files to reduce file size',
     path: '/tools/pdf-compressor',
     icon: Archive,
+    category: 'PDF',
   },
   {
     id: 'pdf-organizer',
     name: 'PDF Organizer',
-    description: 'Compress PDF files to reduce file size',
+    description: 'Organize and reorder PDF pages',
     path: '/tools/pdf-organizer',
     icon: Archive,
+    category: 'PDF',
   },
   {
     id: 'pdf-image-converter',
@@ -57,6 +64,7 @@ export const tools: Tool[] = [
     description: 'Convert PDF to images and images to PDF',
     path: '/tools/pdf-image-converter',
     icon: ArrowUpDown,
+    category: 'PDF',
   },
 
 ];
